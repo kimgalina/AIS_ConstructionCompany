@@ -40,6 +40,8 @@ public class AutomaticSystem {
             switch(option)
             {
                 case 0:
+                    Director director = new Director();
+                   
 
                     noOptionSelected = false;
                     break;
@@ -48,19 +50,26 @@ public class AutomaticSystem {
 
 
 
+
                     noOptionSelected = false;
                     break;
                 case 2:
+                    Manager manager = new Manager();
 
 
                     noOptionSelected = false;
                     break;
                 case 3:
+                    CorpWorker worker = new CorpWorker();
+
+
 
 
                     noOptionSelected = false;
                     break;
                 case 4:
+                    SaleManager saleManager = new SaleManager();
+
 
 
                     noOptionSelected = false;
@@ -74,6 +83,34 @@ public class AutomaticSystem {
             }
 
         }
+
+    }
+    boolean isAuthorizationSuccessful(String post)throws Exception{
+        // подсоеденияемся к БД
+        Connection connection = connectToDB();
+        String SQL_GET_LOGIN_PASSWORD = "SELECT login , password FROM employees WHERE post = ?";
+        ResultSet result;
+
+        // приготаливаем заранее запрос заранее не зная у кого будем брать логин и пароль
+        var  preparedStatement = connection.prepareStatement(SQL_GET_LOGIN_PASSWORD);
+        // вставляем в запрос должность
+        preparedStatement.setString(1,post);
+
+        String login,password , SQL_login = "" , SQL_password = "";
+        System.out.print("Enter your login >>> ");
+        login = console.nextLine();
+        System.out.print("\nEnter your password >>> ");
+        password = console.nextLine();
+        // получаем данные из базы
+        result = preparedStatement.executeQuery();
+
+        while(result.next())
+        {
+            SQL_login = result.getString("login");
+            SQL_password = result.getString("password");
+
+        }
+        return (password.equals(SQL_password) && login.equals(SQL_login));
 
     }
 
