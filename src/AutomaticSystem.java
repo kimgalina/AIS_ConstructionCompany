@@ -41,7 +41,7 @@ public class AutomaticSystem {
             {
                 case 0:
                     Director director = new Director();
-                   
+
 
                     noOptionSelected = false;
                     break;
