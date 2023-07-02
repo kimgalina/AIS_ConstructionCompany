@@ -5,14 +5,14 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 public class AutomaticSystem {
-    private  final String DB_USERNAME = "postgres";
-    private  final String DB_PASSWORD= "vyhuhol05.kg";
-    private  final String DB_URL= "jdbc:postgresql://localhost:5433/ais_construction_company";
+    private static  final String DB_USERNAME = "postgres";
+    private static  final String DB_PASSWORD= "vyhuhol05.kg";
+    private static  final String DB_URL= "jdbc:postgresql://localhost:5433/ais_construction_company";
     Scanner console = new Scanner(System.in);
 
 
     // метод для подключения к базе данных
-    protected  Connection connectToDB() throws Exception{
+    protected  static Connection connectToDB() throws Exception{
         Connection connection0 = DriverManager.getConnection(DB_URL,DB_USERNAME,DB_PASSWORD);
         return connection0;
     }
