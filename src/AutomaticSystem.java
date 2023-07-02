@@ -48,9 +48,6 @@ public class AutomaticSystem {
                 case 1:
                     Marketer marketer = new Marketer();
                     marketer.startMarketer();
-
-
-
                     noOptionSelected = false;
                     break;
                 case 2:
