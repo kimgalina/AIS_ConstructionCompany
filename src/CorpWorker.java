@@ -34,4 +34,17 @@ public class CorpWorker extends AutomaticSystem{
         return (password.equals(SQL_password) && login.equals(SQL_login));
 
     }
+
+    void startWorker()throws Exception{
+        // если авторизация прошла успешно показывает меню для сотрудника , если нет возвращает в главное меню
+        if(isAuthorizationSuccessful()){
+            Show_menu("Worker_menu");
+
+
+
+        }else{
+            System.err.println("Incorrect login or password !");
+            start();
+        }
+    }
 }
